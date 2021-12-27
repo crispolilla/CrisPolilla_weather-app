@@ -1,0 +1,55 @@
+body {
+  font-family: 'Lato', sans-serif;
+  background: radial-gradient(circle at 50.3% 44.5%, rgb(255, 241, 235) 0%, rgb(172, 224, 249) 100.2%);
+  color: #D5A651;
+}
+
+label {
+  margin: 0 auto;
+  position: relative;
+  top: 6px;
+  text-align: center;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.search-bar {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.city-input {
+  display: inline;
+  margin-left: 7px;
+  width:auto;
+}
+
+.enter-btn {
+  position: relative;
+  top: -2px;
+  background: rgb(241,241,241);
+  border-color: #ced4da;
+}
+
+.enter-btn:hover{
+  background:  #ced4da; 
+  border-color: #ced4da;
+}
+
+.my-location {
+  color: inherit;
+  margin-top: 20px;
+  position: initial;
+}
+
+.pictures-search {
+  margin: 20px auto;
+  padding: 30px 10px 30px 10px;
+  width: 100%; 
+  border: #D5A651 solid;
+}
+
+.pictures-search img {
+  width: 100%;
+}

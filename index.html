@@ -6,10 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cris Weather-App</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
   <div class="container">
+    <div class="search-bar">
+        <form class="form-group" id="enter-city">
+          <label>How is the weather in</label>
+          <input
+            type="text"
+            class="form-control city-input"
+            id="city-input"
+            placeholder="Enter city"
+          />
+          <input type="submit" class="btn btn-secondary enter-btn" value="🔍" />
+        </form>
+        <button
+          class="btn btn-secondary enter-btn my-location"
+          id="my-location"
+        > Search for my current location 📍
+        </button>
+      </div>
+
+      <div class="row pictures-search">
+        <div class="col">
+          <img src="media/summer ice cream.jpg" alt="summer ice cream" />
+        </div>
+        <div class="col">
+          <img src="media/flower field.jpg" alt="flower field" />
+        </div>
+        <div class="col">
+          <img src="media/rain umbrella.jpg" alt="rain umbrella" />
+        </div>
+        <div class="col">
+          <img src="media/windy bridge.jpg" alt="windy coat" />
+        </div>
+      </div>
  
   </div>
 
