@@ -1,0 +1,9 @@
+h1 {
+  color:blueviolet;
+  text-align: center;
+}
+.btn {
+  display: block;
+  margin: 0 auto;
+  border-radius: 30px;
+}
