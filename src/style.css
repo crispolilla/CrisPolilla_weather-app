@@ -18,6 +18,15 @@ button {
   border-radius: 20%;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li  {
+  padding: 0;
+}
+
 .search-bar {
   margin: 40px auto;
   text-align: center;
@@ -56,4 +65,8 @@ button {
 
 .pictures-search img {
   width: 100%;
+}
+
+.icon {
+  font-size: 45px;
 }
