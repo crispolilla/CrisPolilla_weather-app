@@ -71,17 +71,19 @@ li  {
   width: 100%;
 }
 
-.today-weather, .forecast, .more-info {
-  margin: 30px 0 20px 0;
-  font-size: 20px;
-}
-
-.today-weather{
+.content-weather {
+  border: #D5A651 solid;
   margin-top: 40px;
 }
 
+.today-weather, .forecast, .more-info {
+  margin: 30px 0 20px 0;
+  padding: 0 20px;
+  font-size: 20px;
+}
+
 .signature {
-  position:absolute;
+  position:sticky;
   bottom: 20px;
   color:#385170;
   font-size: 14px;
