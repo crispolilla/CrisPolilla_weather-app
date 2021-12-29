@@ -20,6 +20,7 @@ button {
 
 ul {
   list-style-type: none;
+  margin: 0;
   padding: 0;
 }
 
@@ -83,7 +84,7 @@ li  {
 }
 
 .signature {
-  position:sticky;
+  position:initial;
   bottom: 20px;
   color:#385170;
   font-size: 14px;
