@@ -1,4 +1,5 @@
 function showTemp (response) {
+  console.log(apiUrl);
   let tempMax = Math.round(response.data.main.temp_max);
   let tempMin = Math.round(response.data.main.temp_min);
   let tempMaxEl = document.querySelector("#temp-max");
@@ -11,6 +12,20 @@ function showTemp (response) {
   rainfallEl.innerHTML = ` ${response.data.main.humidity}%`;
   let cityEl = document.querySelector("#city");
   cityEl.innerHTML = `${response.data.name}`;
+  let iconCode = response.data.weather[0].icon;
+  let iconText = "fas fa-cloud-sun";
+  if (iconCode === "01d") {iconText = "fas fa-sun";}
+  else {if (iconCode === "02d" || iconCode === "02n") {iconText = "fas fa-cloud-sun";}
+  else {if (iconCode === "03d" || iconCode === "03n") {iconText = "fas fa-cloud";}
+  else {if (iconCode === "04d" || iconCode === "04n") {iconText = "fas fa-cloud";}
+  else {if (iconCode === "09d" || iconCode === "09n") {iconText = "fas fa-cloud-showers-heavy";}
+  else {if (iconCode === "10d" || iconCode === "10n") {iconText = "fas fa-cloud-sun-rain";}
+  else {if (iconCode === "11d" || iconCode === "11n") {iconText = "fas fa-cloud-showers-heavy";}
+  else {if (iconCode === "13d" || iconCode === "13n") {iconText = "fas fa-snowflake";}
+  else {if (iconCode === "50d" || iconCode === "50n") {iconText = "fas- fa-smog";}}}}}}}}}
+  let iconEl = document.querySelector("#icon-today");
+  iconEl.setAttribute("class", iconText);
+  console.log(iconCode);
 }
 
 let cityEl = document.querySelector("#city");
