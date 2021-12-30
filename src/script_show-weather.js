@@ -1,17 +1,4 @@
-function showTemp (response) {
-  let tempMax = Math.round(response.data.main.temp_max);
-  let tempMin = Math.round(response.data.main.temp_min);
-  let tempMaxEl = document.querySelector("#temp-max");
-  let tempMinEl = document.querySelector("#temp-min");
-  let descriptionEl = document.querySelector("#description");
-  let rainfallEl = document.querySelector("#rain");
-  tempMaxEl.innerHTML = `${tempMax}° C`;
-  tempMinEl.innerHTML = `${tempMin}°`;
-  descriptionEl.innerHTML = `${response.data.weather[0].description}`;
-  rainfallEl.innerHTML = ` ${response.data.main.humidity}%`;
-  let cityEl = document.querySelector("#city");
-  cityEl.innerHTML = `${response.data.name}`;
-  let iconCode = response.data.weather[0].icon;
+function changeIcon (iconCode) {
   let iconText = "fas fa-cloud-sun";
   if (iconCode === "01d") {iconText = "fas fa-sun";}
   else {if (iconCode === "02d" || iconCode === "02n") {iconText = "fas fa-cloud-sun";}
@@ -26,13 +13,74 @@ function showTemp (response) {
   iconEl.setAttribute("class", iconText);
 }
 
+function setCity (cityInput) {
+  let cityEl = document.querySelector("#city");
+  cityEl.innerHTML = `${cityInput}`;
+}
+
+function showTemp (response) {
+  let tempMax = Math.round(response.data.main.temp_max);
+  let tempMin = Math.round(response.data.main.temp_min);
+  let tempMaxEl = document.querySelector("#temp-max");
+  let tempMinEl = document.querySelector("#temp-min");
+  let descriptionEl = document.querySelector("#description");
+  let rainfallEl = document.querySelector("#rain");
+  tempMaxEl.innerHTML = `${tempMax}° C`;
+  tempMinEl.innerHTML = `${tempMin}°`;
+  descriptionEl.innerHTML = `${response.data.weather[0].description}`;
+  rainfallEl.innerHTML = ` ${response.data.main.humidity}%`;
+  setCity (response.data.name);
+  let iconCode = response.data.weather[0].icon;
+  changeIcon(iconCode);
+    let linkF = document.querySelector("#linkF");
+    linkF.innerHTML = `show me in °F`;
+}
+
+function showTempF(response) {
+  let tempMax = Math.round(response.data.main.temp_max);
+  let tempMin = Math.round(response.data.main.temp_min);
+  let tempMaxEl = document.querySelector("#temp-max");
+  let tempMinEl = document.querySelector("#temp-min");
+  let descriptionEl = document.querySelector("#description");
+  let rainfallEl = document.querySelector("#rain");
+  tempMaxEl.innerHTML = `${tempMax}° F`;
+  tempMinEl.innerHTML = `${tempMin}°`;
+  descriptionEl.innerHTML = `${response.data.weather[0].description}`;
+  rainfallEl.innerHTML = ` ${response.data.main.humidity}%`;
+  setCity(response.data.name);
+  let iconCode = response.data.weather[0].icon;
+  changeIcon(iconCode);
+  let linkF = document.querySelector("#linkF");
+  linkF.innerHTML = `show me in °C`;
+}
+
+function changeUnit (event) {
+  event.preventDefault();
+  let tempMaxEl = document.querySelector("#temp-max");
+  if (tempMaxEl.innerHTML.includes("° C")) {
+    let unit = "imperial";
+    let apiKey = `87bb877dc5b8cdcd202ebaa9f56f9365`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(showTempF);   
+  }
+  else {
+    let unit = "metric";
+    let apiKey = `87bb877dc5b8cdcd202ebaa9f56f9365`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(showTemp);   
+  }
+}
+
 let cityEl = document.querySelector("#city");
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const city = urlParams.get("city");
 cityEl.innerHTML = `${city}`;
 
+let unit = "metric"
 let apiKey = `87bb877dc5b8cdcd202ebaa9f56f9365`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
 axios.get(apiUrl).then(showTemp);
+
+let linkF = document.querySelector("#linkF");
+linkF.addEventListener("click", changeUnit);
