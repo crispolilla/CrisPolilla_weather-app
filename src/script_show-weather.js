@@ -8,7 +8,7 @@ function changeIcon (iconCode) {
   else {if (iconCode === "10d" || iconCode === "10n") {iconText = "fas fa-cloud-sun-rain";}
   else {if (iconCode === "11d" || iconCode === "11n") {iconText = "fas fa-cloud-showers-heavy";}
   else {if (iconCode === "13d" || iconCode === "13n") {iconText = "fas fa-snowflake";}
-  else {if (iconCode === "50d" || iconCode === "50n") {iconText = "fas- fa-smog";}}}}}}}}}
+  else {if (iconCode === "50d" || iconCode === "50n") {iconText = "fas fa-smog";}}}}}}}}}
   let iconEl = document.querySelector("#icon-today");
   iconEl.setAttribute("class", iconText);
 }
