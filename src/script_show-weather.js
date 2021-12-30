@@ -1,5 +1,4 @@
 function showTemp (response) {
-  console.log(apiUrl);
   let tempMax = Math.round(response.data.main.temp_max);
   let tempMin = Math.round(response.data.main.temp_min);
   let tempMaxEl = document.querySelector("#temp-max");
@@ -25,7 +24,6 @@ function showTemp (response) {
   else {if (iconCode === "50d" || iconCode === "50n") {iconText = "fas- fa-smog";}}}}}}}}}
   let iconEl = document.querySelector("#icon-today");
   iconEl.setAttribute("class", iconText);
-  console.log(iconCode);
 }
 
 let cityEl = document.querySelector("#city");
@@ -33,7 +31,6 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const city = urlParams.get("city");
 cityEl.innerHTML = `${city}`;
-console.log(city);
 
 let apiKey = `87bb877dc5b8cdcd202ebaa9f56f9365`;
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
