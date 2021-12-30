@@ -13,7 +13,12 @@ function showTemp (response) {
   cityEl.innerHTML = `${response.data.name}`;
 }
 
-let city = `Chicago`;
+let cityEl = document.querySelector("#city");
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const city = urlParams.get("city");
+cityEl.innerHTML = `${city}`;
+console.log(city);
 
 let apiKey = `87bb877dc5b8cdcd202ebaa9f56f9365`;
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
