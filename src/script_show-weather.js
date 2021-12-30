@@ -19,16 +19,20 @@ function setCity (cityInput) {
 }
 
 function showTemp (response) {
+  console.log(apiUrl);
   let tempMax = Math.round(response.data.main.temp_max);
   let tempMin = Math.round(response.data.main.temp_min);
+  let windspeed = Math.round(response.data.wind.speed *3,6);
   let tempMaxEl = document.querySelector("#temp-max");
   let tempMinEl = document.querySelector("#temp-min");
   let descriptionEl = document.querySelector("#description");
   let rainfallEl = document.querySelector("#rain");
+  let windspeedEl = document.querySelector("#wind");
   tempMaxEl.innerHTML = `${tempMax}° C`;
   tempMinEl.innerHTML = `${tempMin}°`;
   descriptionEl.innerHTML = `${response.data.weather[0].description}`;
   rainfallEl.innerHTML = ` ${response.data.main.humidity}%`;
+  windspeedEl.innerHTML = ` ${windspeed} km/h`;
   setCity (response.data.name);
   let iconCode = response.data.weather[0].icon;
   changeIcon(iconCode);
@@ -39,14 +43,17 @@ function showTemp (response) {
 function showTempF(response) {
   let tempMax = Math.round(response.data.main.temp_max);
   let tempMin = Math.round(response.data.main.temp_min);
+  let windspeed = Math.round(response.data.wind.speed);
   let tempMaxEl = document.querySelector("#temp-max");
   let tempMinEl = document.querySelector("#temp-min");
   let descriptionEl = document.querySelector("#description");
   let rainfallEl = document.querySelector("#rain");
+  let windspeedEl = document.querySelector("#wind");
   tempMaxEl.innerHTML = `${tempMax}° F`;
   tempMinEl.innerHTML = `${tempMin}°`;
   descriptionEl.innerHTML = `${response.data.weather[0].description}`;
   rainfallEl.innerHTML = ` ${response.data.main.humidity}%`;
+  windspeedEl.innerHTML = ` ${windspeed} mi/h`;
   setCity(response.data.name);
   let iconCode = response.data.weather[0].icon;
   changeIcon(iconCode);
