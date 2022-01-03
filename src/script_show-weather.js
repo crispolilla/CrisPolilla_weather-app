@@ -36,8 +36,8 @@ function showTemp (response) {
   setCity (response.data.name);
   let iconCode = response.data.weather[0].icon;
   changeIcon(iconCode);
-    let linkF = document.querySelector("#linkF");
-    linkF.innerHTML = `show me in °F`;
+  let linkF = document.querySelector("#linkF");
+  linkF.innerHTML = `show me in °F`;
 }
 
 function showTempF(response) {
@@ -84,7 +84,17 @@ const urlParams = new URLSearchParams(queryString);
 const city = urlParams.get("city");
 cityEl.innerHTML = `${city}`;
 
-let unit = "metric"
+let dateTodayEl = document.querySelector("#date-today");
+let newDate = new Date();
+let dateToday = new Intl.DateTimeFormat(`de-DE`, {
+  day: "2-digit",
+  month: "2-digit"
+}).format(newDate);
+dateTodayEl.innerHTML = dateToday
+/*`${dateToday.getDate()}.${dateToday.getMonth()+1}.`;
+*/
+
+let unit = "metric";
 let apiKey = `87bb877dc5b8cdcd202ebaa9f56f9365`;
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
 axios.get(apiUrl).then(showTemp);
