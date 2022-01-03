@@ -18,6 +18,37 @@ function setCity (cityInput) {
   cityEl.innerHTML = `${cityInput}`;
 }
 
+function showForecast () {
+  let forecastRowEl = document.querySelector("#forecastRow");
+  let forecastHTML = "";
+  let days = ["Tuesday","Wednesday","Thursday"];
+  days.forEach(function(day) {
+    forecastHTML = forecastHTML + 
+   `
+    <div class="col">
+      <ul class="date-box">
+        <li class="icon">
+          <i class="fas fa-cloud icon" id="icon-forecast1"></i>
+        </li>
+        <li class="day" id="day-forecast1">
+          ${day}
+        </li>
+        <li class="date" id="date-forecast1">
+          28.12.
+        </li>
+      </ul> 
+    </div>
+    <div class="col temp-box">
+      <ul class="temp-box">
+        <li class="temp-max" id="temp-max-forecast1"> 12°</li>
+        <li class="temp-min" id="temp-min-forecast1">  9°</li>
+      </ul>
+    </div>
+    `;
+  });
+  forecastRowEl.innerHTML = forecastHTML;
+}
+
 function showTemp (response) {
   console.log(apiUrl);
   let tempMax = Math.round(response.data.main.temp_max);
@@ -37,6 +68,7 @@ function showTemp (response) {
   let iconCode = response.data.weather[0].icon;
   changeIcon(iconCode);
   let linkF = document.querySelector("#linkF");
+  showForecast();
   linkF.innerHTML = `show me in °F`;
 }
 
