@@ -40,6 +40,14 @@ function getForecast (coordinates) {
   console.log(apiUrl);
 }
 
+function getForecastF(coordinates) {
+  let unit = "imperial";
+  let apiKey = `87bb877dc5b8cdcd202ebaa9f56f9365`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showForecast);
+  console.log(apiUrl);
+}
+
 function showForecast (response) {
   let forecastRowEl = document.querySelector("#forecastRow");
   let forecastHTML = "";
@@ -70,6 +78,38 @@ function showForecast (response) {
   forecastRowEl.innerHTML = forecastHTML;
 }
 
+/*
+function showForecastF(response) {
+  let forecastRowEl = document.querySelector("#forecastRow");
+  let forecastHTML = "";
+  let forecastDays = response.data.daily;
+  forecastDays.forEach(function (forecastDay, index) {
+    if (index <= 3) {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col">
+          <ul class="date-box">
+            <li class="icon">
+              <i class="${changeIcon(forecastDay.weather[0].icon)}"></i>
+            </li>
+            <li class="day"> ${formatWeekday(forecastDay.dt * 1000)} </li>
+            <li class="date"> ${formatDate(forecastDay.dt * 1000)} </li>
+          </ul> 
+        </div>
+        <div class="col temp-box">
+          <ul class="temp-box">
+            <li class="temp-max"> ${Math.round(forecastDay.temp.max)}° </li>
+            <li class="temp-min"> ${Math.round(forecastDay.temp.min)}° </li>
+          </ul>
+        </div>
+      `;
+    }
+  });
+  forecastRowEl.innerHTML = forecastHTML;
+}
+*/
+
 function showTemp (response) {
   console.log(apiUrl);
   let tempMax = Math.round(response.data.main.temp_max);
@@ -90,9 +130,9 @@ function showTemp (response) {
   let iconEl = document.querySelector("#icon-today");
   iconEl.setAttribute("class", changeIcon(iconCode));
   let linkF = document.querySelector("#linkF");
+  linkF.innerHTML = `show me in °F`;
   getForecast(response.data.coord);
   showForecast();
-  linkF.innerHTML = `show me in °F`;
 }
 
 function showTempF(response) {
@@ -115,8 +155,10 @@ function showTempF(response) {
   iconEl.setAttribute("class", changeIcon(iconCode));
   let linkF = document.querySelector("#linkF");
   linkF.innerHTML = `show me in °C`;
+  getForecastF(response.data.coord);
+  showForecast();
 }
-  
+
 function changeUnit (event) {
   event.preventDefault();
   let tempMaxEl = document.querySelector("#temp-max");
