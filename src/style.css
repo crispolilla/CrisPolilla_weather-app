@@ -132,3 +132,7 @@ li  {
   font-weight: bold;
   font-style: italic;
 }
+
+.more-info a:hover {
+  color:rgb(151, 43, 43);
+}
