@@ -53,7 +53,7 @@ function showForecast (response) {
   let forecastHTML = "";
   let forecastDays = response.data.daily;
   forecastDays.forEach(function(forecastDay, index) {
-    if (index <= 3) {
+    if (index > 0 && index <= 4) {
       forecastHTML =
       forecastHTML +
       `
@@ -77,38 +77,6 @@ function showForecast (response) {
   });
   forecastRowEl.innerHTML = forecastHTML;
 }
-
-/*
-function showForecastF(response) {
-  let forecastRowEl = document.querySelector("#forecastRow");
-  let forecastHTML = "";
-  let forecastDays = response.data.daily;
-  forecastDays.forEach(function (forecastDay, index) {
-    if (index <= 3) {
-      forecastHTML =
-        forecastHTML +
-        `
-        <div class="col">
-          <ul class="date-box">
-            <li class="icon">
-              <i class="${changeIcon(forecastDay.weather[0].icon)}"></i>
-            </li>
-            <li class="day"> ${formatWeekday(forecastDay.dt * 1000)} </li>
-            <li class="date"> ${formatDate(forecastDay.dt * 1000)} </li>
-          </ul> 
-        </div>
-        <div class="col temp-box">
-          <ul class="temp-box">
-            <li class="temp-max"> ${Math.round(forecastDay.temp.max)}° </li>
-            <li class="temp-min"> ${Math.round(forecastDay.temp.min)}° </li>
-          </ul>
-        </div>
-      `;
-    }
-  });
-  forecastRowEl.innerHTML = forecastHTML;
-}
-*/
 
 function showTemp (response) {
   console.log(apiUrl);
